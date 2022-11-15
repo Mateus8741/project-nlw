@@ -1,9 +1,9 @@
 -- CreateTable
 CREATE TABLE "Participant" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "userId" TEXT,
+    "userId" TEXT NOT NULL,
     "poolId" TEXT NOT NULL,
-    CONSTRAINT "Participant_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT "Participant_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT "Participant_poolId_fkey" FOREIGN KEY ("poolId") REFERENCES "Pool" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -21,7 +21,7 @@ CREATE TABLE "Game" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "date" DATETIME NOT NULL,
     "firstTeamCountryCode" TEXT NOT NULL,
-    "secondTeamCountyCode" TEXT NOT NULL
+    "secondTeamCountryCode" TEXT NOT NULL
 );
 
 -- CreateTable
